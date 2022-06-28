@@ -120,6 +120,10 @@ body {
         font: 20px / 30px 'Montserrat', sans-serif;
         color: rgb(48, 48, 48);
     }
+    .single-news__text {
+        font: 20px / 30px 'Montserrat', sans-serif;
+        color: rgb(48, 48, 48);
+    }
 
     blockquote {
         margin: 30px 0 30px 80px !important;

@@ -69,13 +69,13 @@ const NewsDetails = ({newsData, lastNews}) => {
                                             ? <div className={'mb-3'}>
                                                 {!showFullStory
                                                     ? <div>
-                                                        <p>{newsData.text}</p>
+                                                        <div dangerouslySetInnerHTML={{__html: newsData.text}}/>
                                                         <span className={'read-more-btn'} onClick={readMoreHandler}>читать подробности</span>
                                                     </div>
                                                     : <div dangerouslySetInnerHTML={{__html: newsData.full_story}}/>
                                                 }
                                             </div>
-                                            : <div><p>{newsData.text}</p></div>
+                                            : <div dangerouslySetInnerHTML={{__html: newsData.text}}/>
                                         }
                                     </div>
 
