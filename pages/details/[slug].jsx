@@ -6,22 +6,17 @@ import APIConfig from "../../utils/api";
 import moment from "moment";
 import 'moment/locale/ru'
 import CustomAd from "../../components/CustomAd";
-import TagManager from 'react-gtm-module'
 
-const tagManagerArgs = {
-    dataLayer: {
-        userId: '001',
-        userProject: 'project',
-        page: 'home'
-    },
-    dataLayerName: 'PageDataLayer'
-}
 
 const NewsDetails = ({newsData, lastNews}) => {
     const [showFullStory, setShowFullStory] = useState(false)
     const readMoreHandler = (() => {
         setShowFullStory(true)
-        TagManager.dataLayer(tagManagerArgs)
+        const pageEvent = {
+            event: 'read_more',
+            source: newsData.source.title
+        };
+        window && window.dataLayer && window.dataLayer.push(pageEvent);
     })
     return (
         <>
