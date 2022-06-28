@@ -62,7 +62,8 @@ export async function getStaticProps() {
     const rows = [...Array(Math.ceil((res.data.news.length / 2)))]
     const newsRows = rows.map((row, idx) => res.data.news.slice(idx * 2, idx * 2 + 2))
     return {
-        props: {newsList: news.news, rowsList: newsRows}
+        props: {newsList: news.news, rowsList: newsRows},
+        revalidate: 10,
     }
 }
 
