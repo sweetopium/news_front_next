@@ -140,7 +140,8 @@ export async function getStaticProps({params}) {
     const res = await APIConfig.get(`get_news_item?slug=${params.slug}`);
     const detailsData = res.data;
     return {
-        props: {newsData: detailsData.news, lastNews: res.data.last_news}
+        props: {newsData: detailsData.news, lastNews: res.data.last_news},
+        revalidate: 10
     }
 }
 
