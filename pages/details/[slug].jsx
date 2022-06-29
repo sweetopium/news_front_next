@@ -22,7 +22,8 @@ const NewsDetails = ({newsData, lastNews}) => {
 
     const onScroll = (event) => {
         const target = event.target
-        if (target.scrollHeight.toFixed() - target.scrollTop.toFixed() === target.clientHeight) {
+        // if (target.scrollHeight.toFixed() - target.scrollTop.toFixed() === target.clientHeight) {
+        if ((target.scrollHeight - target.scrollTop - target.clientHeight) < 55) {
             // window.location.replace(`/1`)
             console.log('SCRL...')
 
