@@ -10,6 +10,7 @@ import CustomAd from "../../components/CustomAd";
 
 const NewsDetails = ({newsData, lastNews}) => {
     const [showFullStory, setShowFullStory] = useState(false)
+    const [newsLimit, setNewsLimit] = useState(10)
     const readMoreHandler = (() => {
         setShowFullStory(true)
         const pageEvent = {
@@ -18,6 +19,21 @@ const NewsDetails = ({newsData, lastNews}) => {
         };
         window && window.dataLayer && window.dataLayer.push(pageEvent);
     })
+
+    const onScroll = (event) => {
+        const target = event.target
+        if (target.scrollHeight.toFixed() - target.scrollTop.toFixed() === target.clientHeight) {
+            // window.location.replace(`/1`)
+            console.log('SCRL...')
+
+            const pageEvent = {
+                event: 'load_more_from_details_page',
+            };
+            window && window.dataLayer && window.dataLayer.push(pageEvent);
+            setNewsLimit(newsLimit + 5)
+        }
+    };
+
     return (
         <>
             <Head>
@@ -48,7 +64,8 @@ const NewsDetails = ({newsData, lastNews}) => {
             </Head>
 
 
-            <div className={'container news__wrapper news-details__item'} id={'page-wrap'}>
+            <div className={'container news__wrapper news-details__item scroller__wrapper'} onScroll={onScroll}
+                 id={'page-wrap'}>
                 <Header/>
 
                 <div className={'row mt-3'}>
@@ -89,41 +106,79 @@ const NewsDetails = ({newsData, lastNews}) => {
                                         }
                                     </div>
 
+                                    <div className={'row mt-5'}>
+                                        <div className={'col-md-12'}>
+                                            {lastNews
+                                                ? <>
+                                                    <h4>Читать еще</h4>
+                                                    {lastNews.slice(3, newsLimit).map((item, index) => {
+                                                        if (index % 2 === 0) {
+                                                            return (
+                                                                <div className={'row'}>
+                                                                    {Array(2).fill().map((el, i) => {
+                                                                        return (
+                                                                            <div className={'col-md-6'} key={item.id}>
+                                                                                <RegNewsItem
+                                                                                    key={lastNews[index + i].id}
+                                                                                    mainImage={lastNews[index + i].image}
+                                                                                    newsTitle={lastNews[index + i].title}
+                                                                                    newsSourceImage={lastNews[index + i].source.logo}
+                                                                                    newsSourceName={lastNews[index + i].source.title}
+                                                                                    newsPubDate={lastNews[index + i].publication_date}
+                                                                                    newsSlug={lastNews[index + i].slug}
+                                                                                />
+                                                                            </div>
+                                                                        )
+                                                                    })}
+                                                                </div>
+                                                            )
+                                                        }
+                                                    })}
+                                                </>
+                                                : null
+                                            }
+
+                                        </div>
+                                    </div>
+
                                 </div>
                                 : null
                         }
                     </div>
 
-                    <div className={'col-md-4 mt-3 mt-md-0'}>
-                        {lastNews
-                            ? <>
-                                <h4>Похожие новости</h4>
-                                {lastNews.map(item => {
-                                    return (
+                    <div className={'col-md-4 mt-3 mt-md-0 d-none d-md-block'}>
+                        <div className={'sticky__sidebar'}>
+                            {lastNews
+                                ? <>
+                                    <CustomAd
+                                        url={'https://yandex.ru'}
+                                        image={'https://storage.yandexcloud.net/ezflow-bucket/mig-credit.png'}
+                                        title={'Вам одобрили займ до 30 000 рублей! Получите деньги сейчас'}
+                                        text={'Займы онлайн под 0%. До 30 000 ₽. Одобрение 99%. Заберите деньги на карту за ' +
+                                            '3 мин! · Конфиденциально. Зачислим деньги за 30 сек.'}
+                                        btnText={'Взять деньги'}
+                                    />
+                                    <h4 className={'mt-4'}>Похожие новости</h4>
+                                    {lastNews.slice(0, 3).map(item => {
+                                        return (
 
-                                        <RegNewsItem
-                                            key={item.id}
-                                            mainImage={item.image}
-                                            newsTitle={item.title}
-                                            newsSourceImage={item.source.logo}
-                                            newsSourceName={item.source.title}
-                                            newsPubDate={item.publication_date}
-                                            newsSlug={item.slug}
-                                        />
-                                    )
-                                })}
+                                            <RegNewsItem
+                                                key={item.id}
+                                                mainImage={item.image}
+                                                newsTitle={item.title}
+                                                newsSourceImage={item.source.logo}
+                                                newsSourceName={item.source.title}
+                                                newsPubDate={item.publication_date}
+                                                newsSlug={item.slug}
+                                            />
+                                        )
+                                    })}
 
-                                <CustomAd
-                                    url={'https://yandex.ru'}
-                                    image={'https://storage.yandexcloud.net/ezflow-bucket/mig-credit.png'}
-                                    title={'Вам одобрили займ до 30 000 рублей! Получите деньги сейчас'}
-                                    text={'Займы онлайн под 0%. До 30 000 ₽. Одобрение 99%. Заберите деньги на карту за ' +
-                                        '3 мин! · Конфиденциально. Зачислим деньги за 30 сек.'}
-                                    btnText={'Взять деньги'}
-                                />
-                            </>
-                            : null
-                        }
+
+                                </>
+                                : null
+                            }
+                        </div>
 
                     </div>
 
