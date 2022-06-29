@@ -76,12 +76,7 @@ export async function getStaticPaths() {
             {params: {page: '2'}},
             {params: {page: '3'}},
             {params: {page: '4'}},
-            {params: {page: '5'}},
-            {params: {page: '6'}},
-            {params: {page: '7'}},
-            {params: {page: '8'}},
-            {params: {page: '10'}},
-
+            {params: {page: '5'}}
         ],
         fallback: true
     };
@@ -90,7 +85,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
     const limit = 26
     const offset = params.page * limit
-    console.log(`get_last_news?offset=${offset}}&limit=${limit}`)
     const res = await APIConfig.get(`get_last_news?offset=${offset}&limit=${limit}`);
     const news = res.data;
     const rows = [...Array(Math.ceil((res.data.news.length / 2)))]
