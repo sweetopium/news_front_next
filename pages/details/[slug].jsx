@@ -21,15 +21,30 @@ const NewsDetails = ({newsData, lastNews}) => {
     return (
         <>
             <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <meta charSet="utf-8"/>
-                <meta name="og:type" content="website"/>
-                <meta property="og:url" content="https://hotbuzz.ru"/>
-                <meta property="og:image" content={newsData.image}/>
-                <meta property="og:title" content={`${newsData.title} | HotBuzz – свежие новости для вас`}/>
-                <meta property="og:description" content={newsData.text}/>
-                <title>{newsData.title} | HotBuzz – свежие новости для вас</title>
-                <meta name="description" content={newsData.text} />
+                {newsData ?
+                    <>
+                        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                        <meta charSet="utf-8"/>
+                        <meta name="og:type" content="website"/>
+                        <meta property="og:url" content="https://hotbuzz.ru"/>
+                        <meta property="og:image" content={newsData.image}/>
+                        <meta property="og:title" content={`${newsData.title} | HotBuzz – свежие новости для вас`}/>
+                        <meta property="og:description" content={newsData.text}/>
+                        <title>{newsData.title} | HotBuzz – свежие новости для вас</title>
+                        <meta name="description" content={newsData.text}/>
+                    </>
+                    :
+                    <>
+                        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                        <meta charSet="utf-8"/>
+                        <meta name="og:type" content="website"/>
+                        <meta property="og:url" content="https://hotbuzz.ru"/>
+                        <meta property="og:title" content="HotBuzz – свежие новости для вас"/>
+                        <meta property="og:description" content="HotBuzz – свежие новости для вас"/>
+                        <title>HotBuzz – свежие новости для вас</title>
+                        <meta name="description" content="HotBuzz – свежие новости для вас"/>
+                    </>
+                }
             </Head>
 
 
