@@ -29,9 +29,10 @@ const NewsDetails = ({newsData, lastNews}) => {
 
             const pageEvent = {
                 event: 'load_more_from_details_page',
+                pageCount: newsLimit / 10
             };
             window && window.dataLayer && window.dataLayer.push(pageEvent);
-            setNewsLimit(newsLimit + 5)
+            setNewsLimit(newsLimit + 10)
         }
     };
 
