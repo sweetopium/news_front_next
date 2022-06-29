@@ -131,7 +131,7 @@ export async function getStaticPaths() {
     })
     return {
         paths: slugsList,
-        fallback: false
+        fallback: true
     };
 }
 
@@ -141,7 +141,7 @@ export async function getStaticProps({params}) {
     const detailsData = res.data;
     return {
         props: {newsData: detailsData.news, lastNews: res.data.last_news},
-        revalidate: 10
+
     }
 }
 
