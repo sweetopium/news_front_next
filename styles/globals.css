@@ -54,6 +54,10 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
+    .single-news__text {
+        width: 100%;
+        overflow: hidden;
+    }
     .single-news__headline {
         font: 700 24px / 28px 'Montserrat', sans-serif;
     }
