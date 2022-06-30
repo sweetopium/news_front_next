@@ -21,7 +21,7 @@ const HomePage = ({newsList, rowsList}) => {
                 <meta name="og:type" content="website"/>
                 <meta property="og:url" content="https://hotbuzz.ru"/>
                 <meta property="og:image"
-                      content="https://images.ctfassets.net/nsxo9fxowju7/6YbIfxqNimfvbYbMlMTWm6/56be337fd176aedc497effb79d425a3b/ogImage.png"/>
+                      content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
                 <meta property="og:title"
                       content="HotBuzz – свежие новости со всего интернета. Персональная подборка новостей"/>
                 <meta property="og:description"
