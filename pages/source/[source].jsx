@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
-import FirstNewsItem from '../components/FirstNewsItem'
-import RegNewsList from '../components/RegNewsList'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
-import APIConfig from "../utils/api";
+import FirstNewsItem from '../../components/FirstNewsItem'
+import RegNewsList from '../../components/RegNewsList'
+import Header from '../../components/Header'
+import Sidebar from '../../components/Sidebar'
+import APIConfig from "../../utils/api";
 import Head from 'next/head'
 import {useRouter} from 'next/router';
 
 
-const HomePage = ({newsList, rowsList}) => {
+const SourcePage = ({newsList, rowsList}) => {
     const {asPath, pathname} = useRouter();
     const onScroll = (event) => {
         const target = event.target
@@ -38,7 +38,7 @@ const HomePage = ({newsList, rowsList}) => {
             </Head>
 
 
-            <div className={'container news__wrapper scroller__wrapper'} onScroll={onScroll}>
+            <div className={'container news__wrapper'}>
                 <Header/>
 
                 <div className={'row'}>
@@ -71,21 +71,17 @@ const HomePage = ({newsList, rowsList}) => {
 export async function getStaticPaths() {
     return {
         paths: [
-            {params: {page: '9'}},
-            {params: {page: '1'}},
-            {params: {page: '2'}},
-            {params: {page: '3'}},
-            {params: {page: '4'}},
-            {params: {page: '5'}}
+            {params: {source: 'rambler'}},
+            {params: {source: 'dni-ru'}},
+            {params: {source: 'muz-tv'}},
+            {params: {source: 'lady-mail-ru'}}
         ],
-        fallback: true
+        fallback: false
     };
 }
 
 export async function getStaticProps({params}) {
-    const limit = 26
-    const offset = params.page * limit
-    const res = await APIConfig.get(`get_last_news?offset=${offset}&limit=${limit}`);
+    const res = await APIConfig.get(`get_last_news_by_source?offset=0&limit=50&source_title=${params.source}`);
     const news = res.data;
     const rows = [...Array(Math.ceil((res.data.news.length / 2)))]
     const newsRows = rows.map((row, idx) => res.data.news.slice(idx * 2, idx * 2 + 2))
@@ -95,4 +91,4 @@ export async function getStaticProps({params}) {
     }
 }
 
-export default HomePage;
+export default SourcePage;

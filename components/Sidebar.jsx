@@ -1,10 +1,15 @@
-import {FiMenu} from "react-icons/fi";
-import {slide as Menu} from "react-burger-menu";
-import React, {useState} from "react";
-import Link from 'next/link'
+import React, {useState, useEffect} from "react";
 import CustomAd from "./CustomAd";
+import APIConfig from "../utils/api";
+import Link from 'next/link'
 
 function Sidebar() {
+    const [newsSources, setNewsSources] = useState([])
+    useEffect(() => {
+        APIConfig.get('get_news_sources').then(res => {
+            setNewsSources(res.data.sources_list)
+        })
+    }, [])
     return (
         <div className={'col-md-4 sidebar__wrapper'}>
             <CustomAd
@@ -15,6 +20,22 @@ function Sidebar() {
                     '3 мин! · Конфиденциально. Зачислим деньги за 30 сек.'}
                 btnText={'Взять деньги'}
             />
+
+            <div className={'row d-none d-md-block'}>
+                <div className={'col-md-12 px-4'}>
+                    <h3>Источники новостей</h3>
+                    <ul className={'sources-list'}>
+                        {newsSources.map(source => {
+                            return <li key={source._id}>
+                                <Link href={{pathname: '/source/[source]', query: {source: source.slug}}}>
+                                    <a className={'source-item__link'}> {source.name} </a>
+                                </Link>
+                                <span className={'source-item__count'}>({source.count})</span>
+                            </li>
+                        })}
+                    </ul>
+                </div>
+            </div>
         </div>
     )
 }
