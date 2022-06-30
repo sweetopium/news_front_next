@@ -6,7 +6,7 @@ import APIConfig from "../../utils/api";
 import moment from "moment";
 import 'moment/locale/ru'
 import CustomAd from "../../components/CustomAd";
-
+import Script from 'next/script'
 
 const NewsDetails = ({newsData, lastNews}) => {
     const [showFullStory, setShowFullStory] = useState(false)
@@ -94,6 +94,14 @@ const NewsDetails = ({newsData, lastNews}) => {
                                              title={newsData.title}/>
                                     </div>
                                     <div className={'single-news__text mt-3'}>
+                                        <Script id={'socBtn'} src={'https://usocial.pro/usocial/usocial.js?uid=78a5013c9bf67367&v=6.1.5'}/>
+                                        <div className={'mb-3'}>
+                                            <p className={'mb-0'}>Поделиться:</p>
+                                        <div className="uSocial-Share" data-pid="6c6c56f2212b6614b1de0901d8db65b1"
+                                             data-type="share"
+                                             data-options="round-rect,style1,default,absolute,horizontal,size48,eachCounter0,counter0,mobile_position_right"
+                                             data-social="vk,mail,telegram,wa,ok"/>
+                                        </div>
                                         {newsData.full_story
                                             ? <div className={'mb-3'}>
                                                 {!showFullStory
@@ -106,6 +114,8 @@ const NewsDetails = ({newsData, lastNews}) => {
                                             </div>
                                             : <div dangerouslySetInnerHTML={{__html: newsData.text}}/>
                                         }
+
+
                                     </div>
 
                                     <div className={'row mt-5'}>
