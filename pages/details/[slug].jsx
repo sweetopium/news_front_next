@@ -163,7 +163,7 @@ const NewsDetails = ({newsData, lastNews}) => {
                             {lastNews
                                 ? <>
                                     <CustomAd
-                                        url={'https://yandex.ru'}
+                                        url={'https://liky.cc/R5wW'}
                                         image={'https://storage.yandexcloud.net/ezflow-bucket/mig-credit.png'}
                                         title={'Вам одобрили займ до 30 000 рублей! Получите деньги сейчас'}
                                         text={'Займы онлайн под 0%. До 30 000 ₽. Одобрение 99%. Заберите деньги на карту за ' +
