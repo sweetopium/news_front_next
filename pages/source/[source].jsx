@@ -69,15 +69,27 @@ const SourcePage = ({newsList, rowsList}) => {
 
 
 export async function getStaticPaths() {
+    if (process.env.LNG !== "en") {
+        return {
+            paths: [
+                {params: {source: 'bossip'}},
+                {params: {source: 'nowtolove'}},
+                {params: {source: 'usmagazine'}},
+                {params: {source: 'intouchweekly'}},
+                {params: {source: 'pagesix'}},
+            ],
+            fallback: false
+        };
+    }
     return {
-        paths: [
-            {params: {source: 'rambler'}},
-            {params: {source: 'dni-ru'}},
-            {params: {source: 'muz-tv'}},
-            {params: {source: 'lady-mail-ru'}}
-        ],
-        fallback: false
-    };
+            paths: [
+                {params: {source: 'rambler'}},
+                {params: {source: 'dni-ru'}},
+                {params: {source: 'muz-tv'}},
+                {params: {source: 'lady-mail-ru'}}
+            ],
+            fallback: false
+        };
 }
 
 export async function getStaticProps({params}) {
