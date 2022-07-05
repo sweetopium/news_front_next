@@ -21,41 +21,21 @@ const SourcePage = ({newsList, rowsList}) => {
 
     return (
         <>
-            {process.env.LNG === "en"
-
-                ? <Head>
-                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                    <meta charSet="utf-8"/>
-                    <meta name="og:type" content="website"/>
-                    <meta property="og:url" content="https://hotbuzz.pw"/>
-                    <meta property="og:image"
-                          content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
-                    <meta property="og:title"
-                          content="HotBuzz - the latest news from around the web. Personal selection of news"/>
-                    <meta property="og:description"
-                          content="HotBuzz is your own personal selection of news. Scandalous news in show business, society and politics just for you!"/>
-                    <title>HotBuzz - the latest news from around the web. Personal selection of news</title>
-                    <meta name="description"
-                          content="HotBuzz is your own personal selection of news. Scandalous news in show business, society and politics just for you!"/>
-                </Head>
-                :
-                <Head>
-                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                    <meta charSet="utf-8"/>
-                    <meta name="og:type" content="website"/>
-                    <meta property="og:url" content="https://hotbuzz.ru"/>
-                    <meta property="og:image"
-                          content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
-                    <meta property="og:title"
-                          content="HotBuzz – свежие новости со всего интернета. Персональная подборка новостей"/>
-                    <meta property="og:description"
-                          content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
-                    <title>HotBuzz – свежие новости со всего интернета. Персональная подборка новостей</title>
-                    <meta name="description"
-                          content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
-                </Head>
-
-            }
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta charSet="utf-8"/>
+                <meta name="og:type" content="website"/>
+                <meta property="og:url" content="https://hotbuzz.pw"/>
+                <meta property="og:image"
+                      content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
+                <meta property="og:title"
+                      content="HotBuzz - the latest news from around the web. Personal selection of news"/>
+                <meta property="og:description"
+                      content="HotBuzz is your own personal selection of news. Scandalous news in show business, society and politics just for you!"/>
+                <title>HotBuzz - the latest news from around the web. Personal selection of news</title>
+                <meta name="description"
+                      content="HotBuzz is your own personal selection of news. Scandalous news in show business, society and politics just for you!"/>
+            </Head>
 
             <div className={'container news__wrapper'}>
                 <Header/>
@@ -88,24 +68,13 @@ const SourcePage = ({newsList, rowsList}) => {
 
 
 export async function getStaticPaths() {
-    if (process.env.LNG === "en") {
-        return {
-            paths: [
-                {params: {source: 'bossip'}},
-                {params: {source: 'nowtolove'}},
-                {params: {source: 'usmagazine'}},
-                {params: {source: 'intouchweekly'}},
-                {params: {source: 'pagesix'}},
-            ],
-            fallback: false
-        };
-    }
     return {
         paths: [
-            {params: {source: 'rambler'}},
-            {params: {source: 'dni-ru'}},
-            {params: {source: 'muz-tv'}},
-            {params: {source: 'lady-mail-ru'}}
+            {params: {source: 'bossip'}},
+            {params: {source: 'nowtolove'}},
+            {params: {source: 'usmagazine'}},
+            {params: {source: 'intouchweekly'}},
+            {params: {source: 'pagesix'}},
         ],
         fallback: false
     };
