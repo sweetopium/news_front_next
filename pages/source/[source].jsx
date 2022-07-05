@@ -69,7 +69,7 @@ const SourcePage = ({newsList, rowsList}) => {
 
 
 export async function getStaticPaths() {
-    if (process.env.LNG !== "en") {
+    if (process.env.LNG === "en") {
         return {
             paths: [
                 {params: {source: 'bossip'}},
