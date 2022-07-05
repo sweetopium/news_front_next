@@ -69,6 +69,17 @@ const HomePage = ({newsList, rowsList}) => {
 
 
 export async function getStaticPaths() {
+    if (process.env.LNG === "en") {
+        return {
+            paths: [
+                {params: {page: '1'}},
+                {params: {page: '2'}},
+                {params: {page: '3'}},
+                {params: {page: '4'}}
+            ],
+            fallback: true
+        };
+    }
     return {
         paths: [
             {params: {page: '9'}},
