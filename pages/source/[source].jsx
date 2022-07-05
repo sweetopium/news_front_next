@@ -21,22 +21,41 @@ const SourcePage = ({newsList, rowsList}) => {
 
     return (
         <>
-            <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <meta charSet="utf-8"/>
-                <meta name="og:type" content="website"/>
-                <meta property="og:url" content="https://hotbuzz.ru"/>
-                <meta property="og:image"
-                      content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
-                <meta property="og:title"
-                      content="HotBuzz – свежие новости со всего интернета. Персональная подборка новостей"/>
-                <meta property="og:description"
-                      content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
-                <title>HotBuzz – свежие новости со всего интернета. Персональная подборка новостей</title>
-                <meta name="description"
-                      content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
-            </Head>
+            {process.env.LNG === "en"
 
+                ? <Head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta charSet="utf-8"/>
+                    <meta name="og:type" content="website"/>
+                    <meta property="og:url" content="https://hotbuzz.ru"/>
+                    <meta property="og:image"
+                          content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
+                    <meta property="og:title"
+                          content="HotBuzz - the latest news from around the web. Personal selection of news"/>
+                    <meta property="og:description"
+                          content="HotBuzz is your own personal selection of news. Scandalous news in show business, society and politics just for you!"/>
+                    <title>HotBuzz - the latest news from around the web. Personal selection of news</title>
+                    <meta name="description"
+                          content="HotBuzz is your own personal selection of news. Scandalous news in show business, society and politics just for you!"/>
+                </Head>
+                :
+                <Head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta charSet="utf-8"/>
+                    <meta name="og:type" content="website"/>
+                    <meta property="og:url" content="https://hotbuzz.ru"/>
+                    <meta property="og:image"
+                          content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
+                    <meta property="og:title"
+                          content="HotBuzz – свежие новости со всего интернета. Персональная подборка новостей"/>
+                    <meta property="og:description"
+                          content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
+                    <title>HotBuzz – свежие новости со всего интернета. Персональная подборка новостей</title>
+                    <meta name="description"
+                          content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
+                </Head>
+
+            }
 
             <div className={'container news__wrapper'}>
                 <Header/>
@@ -82,14 +101,14 @@ export async function getStaticPaths() {
         };
     }
     return {
-            paths: [
-                {params: {source: 'rambler'}},
-                {params: {source: 'dni-ru'}},
-                {params: {source: 'muz-tv'}},
-                {params: {source: 'lady-mail-ru'}}
-            ],
-            fallback: false
-        };
+        paths: [
+            {params: {source: 'rambler'}},
+            {params: {source: 'dni-ru'}},
+            {params: {source: 'muz-tv'}},
+            {params: {source: 'lady-mail-ru'}}
+        ],
+        fallback: false
+    };
 }
 
 export async function getStaticProps({params}) {

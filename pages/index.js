@@ -7,7 +7,7 @@ import APIConfig from "../utils/api";
 import Head from 'next/head'
 
 const HomePage = ({newsList, rowsList}) => {
-     const onScroll = (event) => {
+    const onScroll = (event) => {
         const target = event.target
         if (target.scrollHeight.toFixed() - target.scrollTop.toFixed() === target.clientHeight) {
             window.location.replace(`/1`)
@@ -15,21 +15,41 @@ const HomePage = ({newsList, rowsList}) => {
     };
     return (
         <>
-            <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <meta charSet="utf-8"/>
-                <meta name="og:type" content="website"/>
-                <meta property="og:url" content="https://hotbuzz.ru"/>
-                <meta property="og:image"
-                      content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
-                <meta property="og:title"
-                      content="HotBuzz – свежие новости со всего интернета. Персональная подборка новостей"/>
-                <meta property="og:description"
-                      content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
-                <title>HotBuzz – свежие новости со всего интернета. Персональная подборка новостей</title>
-                <meta name="description"
-                      content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
-            </Head>
+            {process.env.LNG === "en"
+
+                ? <Head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta charSet="utf-8"/>
+                    <meta name="og:type" content="website"/>
+                    <meta property="og:url" content="https://hotbuzz.ru"/>
+                    <meta property="og:image"
+                          content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
+                    <meta property="og:title"
+                          content="HotBuzz - the latest news from around the web. Personal selection of news"/>
+                    <meta property="og:description"
+                          content="HotBuzz is your own personal selection of news. Scandalous news in show business, society and politics just for you!"/>
+                    <title>HotBuzz - the latest news from around the web. Personal selection of news</title>
+                    <meta name="description"
+                          content="HotBuzz is your own personal selection of news. Scandalous news in show business, society and politics just for you!"/>
+                </Head>
+
+                : <Head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <meta charSet="utf-8"/>
+                    <meta name="og:type" content="website"/>
+                    <meta property="og:url" content="https://hotbuzz.ru"/>
+                    <meta property="og:image"
+                          content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
+                    <meta property="og:title"
+                          content="HotBuzz – свежие новости со всего интернета. Персональная подборка новостей"/>
+                    <meta property="og:description"
+                          content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
+                    <title>HotBuzz – свежие новости со всего интернета. Персональная подборка новостей</title>
+                    <meta name="description"
+                          content="HotBuzz - это твоя персональная подборка новостей. Скандальные новости шоу-бизнеса, общества и политики только для тебя!"/>
+                </Head>
+
+            }
 
 
             <div className={'container news__wrapper scroller__wrapper'} onScroll={onScroll} id={'page-wrap'}>
@@ -47,12 +67,12 @@ const HomePage = ({newsList, rowsList}) => {
                                     newsPubDate={newsList[0].publication_date}
                                     newsSlug={newsList[0].slug}
                                 />
-                                <RegNewsList rowsList={rowsList} />
+                                <RegNewsList rowsList={rowsList}/>
                             </>
                             : null
                         }
                     </div>
-                    <Sidebar />
+                    <Sidebar/>
                 </div>
 
 
