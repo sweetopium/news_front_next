@@ -27,7 +27,7 @@ const SourcePage = ({newsList, rowsList}) => {
                     <meta name="viewport" content="width=device-width, initial-scale=1"/>
                     <meta charSet="utf-8"/>
                     <meta name="og:type" content="website"/>
-                    <meta property="og:url" content="https://hotbuzz.ru"/>
+                    <meta property="og:url" content="https://hotbuzz.pw"/>
                     <meta property="og:image"
                           content="https://storage.yandexcloud.net/ezflow-bucket/hb-og.png"/>
                     <meta property="og:title"
