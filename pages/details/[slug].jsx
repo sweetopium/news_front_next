@@ -10,6 +10,7 @@ import Script from 'next/script'
 
 const NewsDetails = ({newsData, lastNews}) => {
     const [showFullStory, setShowFullStory] = useState(false)
+    const [newsDescription, setNewsDescription] = useState('HotBuzz – свежие новости для вас')
     const [newsLimit, setNewsLimit] = useState(10)
     const readMoreHandler = (() => {
         setShowFullStory(true)
@@ -40,6 +41,13 @@ const NewsDetails = ({newsData, lastNews}) => {
         const script =document.createElement('script')
         script.innerHTML = '!(function(w,m){(w[m]||(w[m]=[]))&&w[m].push({id:\'l22u02uogfo\',block:\'132555\',site_id:\'25093\'});})(window, \'mtzBlocks\');'
         document.body.appendChild(script);
+
+        if (newsData) {
+            const parser = new DOMParser()
+            const newsDescriptionHTML = parser.parseFromString(newsData.text, 'text/html')
+            setNewsDescription(newsDescriptionHTML.body.getElementsByTagName("P")[0].innerText)
+        }
+
     }, [])
 
     return (
@@ -54,9 +62,9 @@ const NewsDetails = ({newsData, lastNews}) => {
                         <meta property="og:url" content="https://hotbuzz.ru"/>
                         <meta property="og:image" content={newsData.image}/>
                         <meta property="og:title" content={`${newsData.title} | HotBuzz – свежие новости для вас`}/>
-                        <meta property="og:description" content={newsData.text}/>
+                        <meta property="og:description" content={newsDescription}/>
                         <title>{newsData.title} | HotBuzz – свежие новости для вас</title>
-                        <meta name="description" content={newsData.text}/>
+                        <meta name="description" content={newsDescription}/>
                     </>
                     :
                     <>
