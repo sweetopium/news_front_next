@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../../components/Header'
 import RegNewsItem from '../../components/RegNewsItem'
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import APIConfig from "../../utils/api";
 import moment from "moment";
 import 'moment/locale/ru'
@@ -36,9 +36,16 @@ const NewsDetails = ({newsData, lastNews}) => {
         }
     };
 
+    useEffect(() => {
+        const script =document.createElement('script')
+        script.innerHTML = '!(function(w,m){(w[m]||(w[m]=[]))&&w[m].push({id:\'l22u02uogfo\',block:\'132555\',site_id:\'25093\'});})(window, \'mtzBlocks\');'
+        document.body.appendChild(script);
+    }, [])
+
     return (
         <>
             <Head>
+                <script src="https://h5r2dzdwqk.com/script.js"/>
                 {newsData ?
                     <>
                         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -120,6 +127,7 @@ const NewsDetails = ({newsData, lastNews}) => {
 
                                     <div className={'row mt-5'}>
                                         <div className={'col-md-12'}>
+                                            <div id="l22u02uogfo" />
                                             {lastNews
                                                 ? <>
                                                     <h4>Читать еще</h4>
