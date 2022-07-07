@@ -45,7 +45,9 @@ const NewsDetails = ({newsData, lastNews}) => {
         if (newsData) {
             const parser = new DOMParser()
             const newsDescriptionHTML = parser.parseFromString(newsData.text, 'text/html')
-            setNewsDescription(newsDescriptionHTML.body.getElementsByTagName("P")[0].innerText)
+            if (newsDescriptionHTML.body.getElementsByTagName("P")[0] !== undefined) {
+                setNewsDescription(newsDescriptionHTML.body.getElementsByTagName("P")[0].innerText)
+            }
         }
 
     }, [])
@@ -159,6 +161,7 @@ const NewsDetails = ({newsData, lastNews}) => {
                                                                         )
                                                                     })}
                                                                 </div>
+
                                                             )
                                                         }
                                                     })}
