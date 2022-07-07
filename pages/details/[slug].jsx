@@ -45,7 +45,7 @@ const NewsDetails = ({newsData, lastNews}) => {
     return (
         <>
             <Head>
-                <script src="https://h5r2dzdwqk.com/script.js"/>
+                <Script src="https://h5r2dzdwqk.com/script.js" />
                 {newsData ?
                     <>
                         <meta name="viewport" content="width=device-width, initial-scale=1"/>
