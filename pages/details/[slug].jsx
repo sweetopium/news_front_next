@@ -72,12 +72,13 @@ const NewsDetails = ({newsData, lastNews}) => {
                            },
                              "author": {
                                 "@type": "Person",
-                                "name": "HotBuzz"
+                                "name": "HotBuzz",
+                                "url": "https://www.hotbuzz.ru"
                               },
                         
                            "headline": "${newsData.title}",
                            "mainEntityOfPage": "https://www.hotbuzz.ru/details/${newsData.slug}",
-                           "articleBody": "${newsData.text}",
+                           "articleBody": "${newsDescription}",
                            "image":"${newsData.image}",
                            "datePublished":"${new Date(newsData.publication_date * 1000).toISOString()}"
                         }
