@@ -38,7 +38,7 @@ const NewsDetails = ({newsData, lastNews}) => {
     };
 
     useEffect(() => {
-        const script =document.createElement('script')
+        const script = document.createElement('script')
         script.innerHTML = '!(function(w,m){(w[m]||(w[m]=[]))&&w[m].push({id:\'l22u02uogfo\',block:\'132555\',site_id:\'25093\'});})(window, \'mtzBlocks\');'
         document.body.appendChild(script);
 
@@ -54,10 +54,35 @@ const NewsDetails = ({newsData, lastNews}) => {
 
     return (
         <>
-            <Script src="https://h5r2dzdwqk.com/script.js" />
+            <Script src="https://h5r2dzdwqk.com/script.js"/>
             <Head>
                 {newsData ?
                     <>
+
+                        <script type="application/ld+json">{`
+                        
+                        {
+                        "@context":"https://schema.org/",
+                        "@type": "NewsArticle",
+                        "url": "https://www.hotbuzz.ru/details/${newsData.slug}",
+                        "publisher":{
+                              "@type":"Organization",
+                              "name":"HotBuzz",
+                              "logo":"https://www.hotbuzz.ru/favicon.ico"
+                           },
+                        
+                           "headline": "${newsData.title}",
+                           "mainEntityOfPage": "https://www.hotbuzz.ru/details/${newsData.slug}",
+                           "articleBody": "${newsData.text}",
+                           "image":[
+                              "${newsData.image}",
+                           ],
+                           "datePublished":"${new Date(newsData.publication_date * 1000).toISOString()}"
+                        }
+                        `}
+                        </script>
+
+
                         <meta name="viewport" content="width=device-width, initial-scale=1"/>
                         <meta charSet="utf-8"/>
                         <meta name="og:type" content="website"/>
@@ -111,13 +136,14 @@ const NewsDetails = ({newsData, lastNews}) => {
                                              title={newsData.title}/>
                                     </div>
                                     <div className={'single-news__text mt-3'}>
-                                        <Script id={'socBtn'} src={'https://usocial.pro/usocial/usocial.js?uid=78a5013c9bf67367&v=6.1.5'}/>
+                                        <Script id={'socBtn'}
+                                                src={'https://usocial.pro/usocial/usocial.js?uid=78a5013c9bf67367&v=6.1.5'}/>
                                         <div className={'mb-3'}>
                                             <p className={'mb-0'}>Поделиться:</p>
-                                        <div className="uSocial-Share" data-pid="6c6c56f2212b6614b1de0901d8db65b1"
-                                             data-type="share"
-                                             data-options="round-rect,style1,default,absolute,horizontal,size48,eachCounter0,counter0,mobile_position_right"
-                                             data-social="vk,mail,telegram,wa,ok"/>
+                                            <div className="uSocial-Share" data-pid="6c6c56f2212b6614b1de0901d8db65b1"
+                                                 data-type="share"
+                                                 data-options="round-rect,style1,default,absolute,horizontal,size48,eachCounter0,counter0,mobile_position_right"
+                                                 data-social="vk,mail,telegram,wa,ok"/>
                                         </div>
                                         {newsData.full_story
                                             ? <div className={'mb-3'}>
@@ -137,7 +163,7 @@ const NewsDetails = ({newsData, lastNews}) => {
 
                                     <div className={'row mt-5'}>
                                         <div className={'col-md-12'}>
-                                            <div id="l22u02uogfo" />
+                                            <div id="l22u02uogfo"/>
                                             {lastNews
                                                 ? <>
                                                     <h4>Читать еще</h4>
