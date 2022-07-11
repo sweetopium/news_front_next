@@ -74,9 +74,7 @@ const NewsDetails = ({newsData, lastNews}) => {
                            "headline": "${newsData.title}",
                            "mainEntityOfPage": "https://www.hotbuzz.ru/details/${newsData.slug}",
                            "articleBody": "${newsData.text}",
-                           "image":[
-                              "${newsData.image}",
-                           ],
+                           "image":"${newsData.image}",
                            "datePublished":"${new Date(newsData.publication_date * 1000).toISOString()}"
                         }
                         `}
