@@ -70,6 +70,10 @@ const NewsDetails = ({newsData, lastNews}) => {
                               "name":"HotBuzz",
                               "logo":"https://www.hotbuzz.ru/favicon.ico"
                            },
+                             "author": {
+                                "@type": "Person",
+                                "name": "HotBuzz"
+                              },
                         
                            "headline": "${newsData.title}",
                            "mainEntityOfPage": "https://www.hotbuzz.ru/details/${newsData.slug}",
